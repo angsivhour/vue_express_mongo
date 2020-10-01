@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         location: req.body.location,
         detail: req.body.detail
     })
-    res.status(202).send()
+    res.status(201).send()
 })
 
 
@@ -27,7 +27,7 @@ async function loadBattambangCollection() {
     const client = mongodb.MongoClient.connect('mongodb+srv://sivhour:hour123@sivhourcoulddb.r0vgt.mongodb.net/<dbname>?retryWrites=true&w=majority', {
         useNewUrlParser: true, useUnifiedTopology: true
     })
-    return (await client).db('Tourism').collection('Battambang')
+    return (await client).db('Tourism').collection('Cambodia')
 }
 
 
