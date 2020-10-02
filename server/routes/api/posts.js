@@ -6,14 +6,14 @@ const router = express.Router();
 
 
 router.get('/', async (req, res) => {
-    const Battambang = await loadBattambangCollection();
-    res.send(await Battambang.find().toArray())
+    const Cambodia = await loadCambodiaCollection();
+    res.send(await Cambodia.find().sort({ id: 1 }).toArray())
 })
 
 
 router.post('/', async (req, res) => {
-    const Battambang = await loadBattambangCollection()
-    await Battambang.insertOne({
+    const Cambodia = await loadCambodiaCollection()
+    await Cambodia.insertOne({
         name: req.body.name,
         img: req.body.img,
         location: req.body.location,
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 })
 
 
-async function loadBattambangCollection() {
+async function loadCambodiaCollection() {
     const client = mongodb.MongoClient.connect('mongodb+srv://sivhour:hour123@sivhourcoulddb.r0vgt.mongodb.net/<dbname>?retryWrites=true&w=majority', {
         useNewUrlParser: true, useUnifiedTopology: true
     })
